@@ -1,0 +1,55 @@
+import random
+
+# Función para calcular el promedio
+def calcular_promedio(lista):
+    return sum(lista) / len(lista)
+
+
+asesores = {
+    "juan": "123",
+    "maria": "456",
+    "carlos": "789",
+    "ana": "321",
+    "luis": "654"
+}
+
+intentos = 0
+acceso = False
+
+# Login con máximo 3 intentos
+while intentos < 3:
+    usuario = input("Usuario: ")
+    clave = input("Clave: ")
+
+    if usuario in asesores and asesores[usuario] == clave:
+        acceso = True
+        print("Acceso permitido")
+        break
+    else:
+        print("Error")
+        intentos += 1
+
+# Si el acceso es correcto
+if acceso:
+
+    rotaciones = []
+
+    # Generar 100 rotaciones aleatorias
+    for i in range(100):
+        valor = random.randint(1, 100)
+        rotaciones.append(valor)
+
+    print("Rotaciones generadas:", rotaciones)
+
+    # Calcular promedio usando función
+    promedio = calcular_promedio(rotaciones)
+
+    print("Promedio:", promedio)
+
+    # Clasificación
+    if promedio < 30:
+        print("Baja rotación")
+    elif promedio < 70:
+        print("Rotación normal")
+    else:
+        print("Rotación alta - reabastecer")
